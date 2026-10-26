@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f7f8f3">
+    <title>Your garden — Verdant</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/app.js" defer></script>
+</head>
+<body class="app-page">
+<div class="app-shell">
+    <aside class="sidebar">
+        <a class="brand" href="/" aria-label="Verdant home"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 36 36"><path d="M28.7 6.7C16.5 6.7 8.2 11.1 8.2 20.2c0 4.5 3.1 7.2 7.1 7.2 8.7 0 13.4-9.2 13.4-20.7Z"/><path d="M8.4 29.5c3.7-7 8.4-10.8 15.4-14.2"/></svg></span><span>verdant<span class="brand-period">.</span></span></a>
+        <p class="sidebar-label">YOUR GARDEN</p>
+        <nav class="side-nav" aria-label="Garden navigation">
+            <button class="nav-item active" data-view="overview"><span class="nav-glyph" aria-hidden="true">⌂</span>Overview</button>
+            <button class="nav-item" data-view="plants"><span class="nav-glyph" aria-hidden="true">❧</span>My plants<span class="nav-count" id="plant-nav-count">0</span></button>
+            <button class="nav-item" data-view="reminders"><span class="nav-glyph" aria-hidden="true">◷</span>Reminders</button>
+            <button class="nav-item" data-view="history"><span class="nav-glyph" aria-hidden="true">↗</span>Care history</button>
+        </nav>
+        <div class="sidebar-bottom">
+            <div class="assistant-promo"><span class="promo-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 5C11 5 6 8 6 14c0 3 2 5 5 5 5 0 8-6 8-14Z"/><path d="M5 21c2-4 5-7 10-10"/></svg></span><strong>Need a little guidance?</strong><p>Ask the plant-care guide.</p><button class="text-link" data-view="assistant">Chat with the guide <span aria-hidden="true">→</span></button></div>
+            <div class="account-row"><span class="account-avatar" id="user-initial">V</span><span class="account-name"><strong id="sidebar-name">Your account</strong><small id="sidebar-email"></small></span><button class="icon-button logout-button" type="button" aria-label="Log out" title="Log out">↗</button></div>
+        </div>
+    </aside>
+    <main class="app-main">
+        <header class="app-topbar"><div><p class="eyebrow" id="today-label">YOUR GARDEN</p><h1 id="page-title">A good day to grow.</h1></div><div class="topbar-actions"><button class="button button-primary" type="button" data-add-plant>＋ <span>Add a plant</span></button></div></header>
+        <div class="app-content">
+            <section class="view-panel active" id="view-overview" aria-labelledby="overview-heading">
+                <div class="welcome-row"><div><p class="eyebrow">A little care goes a long way</p><h2 id="overview-heading">Good to see you, <span id="welcome-name">gardener</span>.</h2><p>Here’s what’s happening in your garden today.</p></div><div class="welcome-sprig" aria-hidden="true"><svg viewBox="0 0 100 120"><path d="M50 112V20M50 56C20 56 16 38 18 22c22 0 34 10 32 34Zm0 28c28 0 37-15 37-31-24 0-37 11-37 31Z"/></svg></div></div>
+                <div class="stats-grid" aria-label="Garden summary">
+                    <article class="stat-card"><span class="stat-label">IN YOUR GARDEN</span><strong id="stat-total">0</strong><span>plants</span></article>
+                    <article class="stat-card"><span class="stat-label">NEED A LITTLE CARE</span><strong id="stat-due">0</strong><span>due today or overdue</span></article>
+                    <article class="stat-card"><span class="stat-label">GROWING STEADILY</span><strong id="stat-schedule">0</strong><span>on schedule</span></article>
+                </div>
+                <div class="content-heading"><div><p class="eyebrow">Your collection</p><h2>Plants at home</h2></div><button class="text-link" data-view="plants">View all <span aria-hidden="true">→</span></button></div>
+                <div class="plant-grid" id="overview-plants"></div>
+                <div class="overview-lower">
+                    <section class="panel-card"><div class="content-heading compact-heading"><div><p class="eyebrow">Keep an eye out</p><h2>Next reminders</h2></div><button class="text-link" data-view="reminders">All reminders <span aria-hidden="true">→</span></button></div><div id="overview-reminders" class="simple-list"></div></section>
+                    <section class="panel-card care-today-card"><p class="eyebrow">A thoughtful routine</p><h2>Small steps, happy leaves.</h2><p>Check soil moisture before watering. Your saved schedule is a helpful nudge, while each plant’s needs may change with the season.</p><button class="text-link" data-view="assistant">Ask the plant-care guide <span aria-hidden="true">→</span></button></section>
+                </div>
+            </section>
+            <section class="view-panel" id="view-plants" aria-labelledby="plants-heading">
+                <div class="section-topline"><div><p class="eyebrow">Your growing collection</p><h2 id="plants-heading">My plants</h2><p class="section-description">Keep your plants, their routines, and your notes together.</p></div><button class="button button-primary" data-add-plant>＋ Add a plant</button></div>
+                <div class="collection-tools"><label class="search-field"><span aria-hidden="true">⌕</span><input id="plant-search" type="search" placeholder="Search your plants..." aria-label="Search plants"></label><label class="select-filter"><span class="sr-only">Filter plants</span><select id="plant-filter"><option value="all">All plants</option><option value="due">Care due</option><option value="scheduled">On schedule</option></select></label></div>
+                <div class="plant-grid full-plant-grid" id="all-plants"></div>
+            </section>
+            <section class="view-panel" id="view-reminders" aria-labelledby="reminders-heading">
+                <div class="section-topline"><div><p class="eyebrow">A gentle nudge</p><h2 id="reminders-heading">Care reminders</h2><p class="section-description">In-app reminders based on the schedules you set.</p></div></div>
+                <div id="reminders-list" class="reminder-list"></div>
+            </section>
+            <section class="view-panel" id="view-history" aria-labelledby="history-heading">
+                <div class="section-topline"><div><p class="eyebrow">A record of your care</p><h2 id="history-heading">Care history</h2><p class="section-description">A quiet record of the ways you’ve cared for your plants.</p></div></div>
+                <div class="panel-card history-panel"><div id="history-list" class="history-list"></div></div>
+            </section>
+            <section class="view-panel assistant-view" id="view-assistant" aria-labelledby="assistant-heading">
+                <div class="section-topline"><div><p class="eyebrow">Here to help things grow</p><h2 id="assistant-heading">Plant-care guide</h2><p class="section-description">A built-in guide for everyday plant-care questions. It is not a diagnostic service.</p></div></div>
+                <div class="chat-card"><div class="chat-top"><span class="chat-bot-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 5C11 5 6 8 6 14c0 3 2 5 5 5 5 0 8-6 8-14Z"/><path d="M5 21c2-4 5-7 10-10"/></svg></span><span><strong>Verdant plant guide</strong><small>Built-in care tips · No external AI service</small></span></div>
+                    <div class="chat-messages" id="chat-messages" aria-live="polite"><div class="chat-message assistant-message">Hello! I can offer general guidance about watering, light, your saved plants, and reminders. What would you like to know?</div></div>
+                    <div class="suggestion-row"><button class="suggestion" data-question="Which of my plants need care today?">Which plants need care?</button><button class="suggestion" data-question="How should I think about watering?">Watering tips</button><button class="suggestion" data-question="What light do houseplants need?">Light advice</button></div>
+                    <form id="chat-form" class="chat-form"><label class="sr-only" for="chat-input">Ask the plant-care guide</label><input id="chat-input" maxlength="500" placeholder="Ask a plant-care question..." required><button class="button button-primary" type="submit">Send <span aria-hidden="true">→</span></button></form>
+                </div>
+            </section>
+        </div>
+        <footer class="app-footer"><span>Verdant keeps your garden close to home.</span><span>Plant photographs are included with the app.</span></footer>
+    </main>
+</div>
+<dialog class="plant-dialog" id="plant-dialog" aria-labelledby="dialog-title">
+    <form id="plant-form" class="dialog-form">
+        <div class="dialog-heading"><div><p class="eyebrow">Make it yours</p><h2 id="dialog-title">Add a plant</h2></div><button class="icon-button" type="button" id="close-dialog" aria-label="Close form">×</button></div>
+        <input id="plant-id" type="hidden">
+        <div class="form-grid">
+            <label class="field-wide">Plant name<input id="plant-name" required maxlength="80" placeholder="e.g. Monstera by the window"></label>
+            <label>Species<select id="plant-species" required><option value="Monstera">Monstera</option><option value="Peace Lily">Peace Lily</option><option value="Snake Plant">Snake Plant</option><option value="Pothos">Pothos</option><option value="Aloe Vera">Aloe Vera</option><option value="Rubber Plant">Rubber Plant</option><option value="Other">Other</option></select></label>
+            <label>Room or location<input id="plant-location" required maxlength="80" placeholder="Living room"></label>
+            <label>Water every (days)<input id="plant-interval" type="number" min="1" max="90" value="7" required></label>
+            <label>Last watered<input id="plant-last-watered" type="date" required></label>
+            <label class="field-wide">Plant photograph<select id="plant-image"><option value="/images/plant-leaves.jpg">Leafy green plant</option><option value="/images/potted-plant.jpg">Potted houseplant</option><option value="/images/sunlit-foliage.jpg">Bright foliage</option><option value="/images/tropical-foliage.jpg">Tropical leaves</option></select></label>
+            <label class="field-wide">Notes <span class="optional-label">optional</span><textarea id="plant-notes" rows="3" maxlength="1000" placeholder="Anything you want to remember about this plant..."></textarea></label>
+        </div>
+        <p class="form-message" id="plant-form-message" role="alert" aria-live="polite"></p>
+        <div class="dialog-actions"><button class="button button-quiet" type="button" id="cancel-dialog">Cancel</button><button class="button button-primary" type="submit" id="save-plant-button">Save plant</button></div>
+    </form>
+</dialog>
+<dialog class="plant-dialog plant-detail-dialog" id="details-dialog" aria-labelledby="details-title">
+    <section class="detail-dialog-content">
+        <div class="dialog-heading"><div><p class="eyebrow">Your plant</p><h2 id="details-title">Plant details</h2></div><button class="icon-button" type="button" id="close-details" aria-label="Close details">×</button></div>
+        <div id="details-content"></div>
+    </section>
+</dialog>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

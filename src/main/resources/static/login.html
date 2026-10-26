@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Log in — Verdant</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/auth.js" defer></script>
+</head>
+<body class="auth-page">
+<a class="back-home" href="/">← <span>Back to home</span></a>
+<main class="auth-layout">
+    <section class="auth-aside login-aside"><a class="brand brand-light" href="/"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 36 36"><path d="M28.7 6.7C16.5 6.7 8.2 11.1 8.2 20.2c0 4.5 3.1 7.2 7.1 7.2 8.7 0 13.4-9.2 13.4-20.7Z"/><path d="M8.4 29.5c3.7-7 8.4-10.8 15.4-14.2"/></svg></span><span>verdant<span class="brand-period">.</span></span></a>
+        <div class="aside-copy"><p class="eyebrow">Welcome back</p><h1>Your garden<br>is waiting.</h1><p>Pick up where you left off and give your plants a little attention.</p></div>
+        <img src="/images/potted-plant.jpg" alt="A collection of green potted plants">
+        <span class="aside-credit">A quiet corner to grow.</span>
+    </section>
+    <section class="auth-panel"><div class="auth-form-wrap">
+        <p class="eyebrow">Your personal garden</p><h2>Welcome back.</h2><p class="form-intro">Log in to see how your plants are doing.</p>
+        <form id="login-form" class="form-stack" novalidate>
+            <label for="login">Email or username</label><input id="login" name="login" autocomplete="username" required maxlength="254" placeholder="you@example.com">
+            <label for="password">Password</label><input id="password" name="password" type="password" autocomplete="current-password" required>
+            <p class="form-message" id="form-message" role="alert" aria-live="polite"></p>
+            <button class="button button-primary button-full" type="submit">Log in <span aria-hidden="true">→</span></button>
+        </form>
+        <p class="auth-switch">New to Verdant? <a href="/register.html">Create an account</a></p>
+        <p class="auth-privacy">Your garden is private and stored on this computer.</p>
+    </div></section>
+</main>
+</body>
+</html>
